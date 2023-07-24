@@ -112,8 +112,8 @@ def main():
     )
 
     wip = []
-    products = []
-    plan = []
+    products = [{'ГДЕ ЛЕЖИТ': 'ф', 'ЧТО ЛЕЖИТ КОД': 'ф', 'ЧТО ЛЕЖИТ НАЗВАНИЕ': 'ф', 'ЧТО ЛЕЖИТ КОЛИЧЕСТВО': 'ф', 'КУДА ВХОДИТ КОД': 'ф', 'КУДА ВХОДИТ НАЗВАНИЕ': 'ф', 'КУДА ВХОДИТ КОЛИЧЕСТВО': 'ф'}]
+    plan = [{'ORDER': 'ф', 'CODE': 'ф', 'NAME': 'ф', 'AMOUNT': 'ф', 'DATE_FROM': 'ф', 'DATE_TO': 'ф'}]
 
     for stock in tqdm(xml_data, desc='Разбор данных'):
         for entity in xml_data[stock]:
