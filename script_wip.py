@@ -66,7 +66,8 @@ def main():
     )
 
     parser.add_argument('-c', '--config', required=False,
-                        default=join(getcwd(), 'kk_wip_parser.yml'))
+                        default=join(getcwd(),
+                                     'example/kk_wip_parser.yml'))
     parser.add_argument('-s', '--server', required=False,
                         default=join(getcwd(), 'server.yml'))
     args = parser.parse_args()
@@ -224,12 +225,12 @@ def main():
                 })
 
     keys = products[0].keys()
-    with open('products.csv', 'w', newline='', encoding='utf-8') as output_file:
+    with open('example/products.csv', 'w', newline='', encoding='utf-8') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(products)
     keys = plan[0].keys()
-    with open('plan.csv', 'w', newline='', encoding='utf-8') as output_file:
+    with open('example/plan.csv', 'w', newline='', encoding='utf-8') as output_file:
         dict_writer = csv.DictWriter(output_file, keys)
         dict_writer.writeheader()
         dict_writer.writerows(plan)
