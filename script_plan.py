@@ -22,7 +22,7 @@ WIP_DEPT_TO_SKIP = ['1011', '1015', '1012', '1013',
 DEPT_TO_SKIP = []
 
 
-def read_from_file(xml_file):
+def read_plan_from_file(xml_file):
     tree = parse(xml_file)
     root = tree.getroot()
     report = {}
@@ -174,7 +174,7 @@ def main():
     sftpPath = config['path']
 
     xml_data = read_from_ftp.read_plan_from_ftp(
-        sftpURL, sftpUser, sftpPass, sftpPath
+        sftpURL, sftpUser, sftpPass, sftpPath, asm=False
     )
 
     plan = []
