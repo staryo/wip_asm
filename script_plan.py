@@ -14,19 +14,19 @@ from logic.xml_tools import get_text_value, get_float_value_with_dot
 from tools.ia_rest import IAImportExport
 from tools.listofdicts_to_csv import dict2csv
 
-WIP_DEPT_TO_SKIP = ['1011', '1015', '1012', '1013',
-                    '1014', '1019', '1017', '0716', 'N101', '7403']
+# WIP_DEPT_TO_SKIP = ['1011', '1015', '1012', '1013',
+#                     '1014', '1019', '1017', '0716', 'N101', '7403']
 # DEPT_TO_SKIP = ['1011', '1015', '1012', '1013',
 #                 '1014', '1019', '1017', '0716', 'N101', '7403']
 # WIP_DEPT_TO_SKIP = []
 DEPT_TO_SKIP = []
 
 
-def read_plan_from_file(xml_file):
+def read_plan_from_file(xml_file, skip):
     tree = parse(xml_file)
     root = tree.getroot()
     report = {}
-
+    WIP_DEPT_TO_SKIP = skip
     # читаем все фреймы в исходном файле
     rows = root.findall('MAT_DATA')
 
@@ -172,9 +172,10 @@ def main():
     # sftpPass = 'Yunku_Kk2021kK'
     # sftpPath = '/home/http_request_collector/app/data/input/state/POST'
     sftpPath = config['path']
+    wipskip = config['skip']
 
     xml_data = read_from_ftp.read_plan_from_ftp(
-        sftpURL, sftpUser, sftpPass, sftpPath, asm=False
+        sftpURL, sftpUser, sftpPass, sftpPath, wipskip, asm=False
     )
 
     plan = []

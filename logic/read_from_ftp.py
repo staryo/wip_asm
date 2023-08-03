@@ -11,7 +11,7 @@ from script_plan import read_plan_from_file
 from script_wip import read_from_file
 
 
-def read_plan_from_ftp(url, user, password, path, asm=True):
+def read_plan_from_ftp(url, user, password, path, skip, asm=True):
 
     client = paramiko.SSHClient()
     # automatically add keys without requiring human intervention
@@ -48,9 +48,9 @@ def read_plan_from_ftp(url, user, password, path, asm=True):
             tqdm.write('{}/body'.format(final_path))
             with closing(ftp.open('{}/body'.format(final_path))) as f:
                 if asm:
-                    xml_data = read_from_file(f)
+                    xml_data = read_from_file(f, skip)
                 else:
-                    xml_data = read_plan_from_file(f)
+                    xml_data = read_plan_from_file(f, skip)
     return xml_data
 
 
